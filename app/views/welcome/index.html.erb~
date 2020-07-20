@@ -1,0 +1,7 @@
+<div class="header">
+    <h1><span class="mqlight">IBM MQ Light</span> on Rails</h1>
+</div>
+<div class="links">
+    <h2><%= link_to 'Message Publisher', new_publisher_path %></h2>
+    <h2><%= link_to 'MQ Light on Rails blog', 'http://developer.ibm.com/messaging/?p=4034&preview=1&_ppp=ad1e03fc6f', :target => "_blank" %></h2>
+</div>

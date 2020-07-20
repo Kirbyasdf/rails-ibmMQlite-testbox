@@ -1,0 +1,36 @@
+require '/home/stephenh/.rubies/ruby-1.9.3-p547/lib/ruby/gems/1.9.1/gems/mqlight-1.0.2015020300.beta-x86_64-linux/lib/mqlight'
+
+class PublishersController < ApplicationController
+  @@result = ""
+
+  helper_method :getResult
+  helper_method :setResult
+
+  def getResult
+    @@result
+  end
+
+  def setResult
+    @@result = ""
+  end
+
+  def create
+    address = params[:publisher][:address]
+    port = params[:publisher][:port]
+    topic = params[:publisher][:topic]
+    content = params[:publisher][:content]
+
+    amqpservice = 'amqp://' + address + ':' + port
+
+    @@result = "Message published"
+    begin
+      client = Mqlight::BlockingClient.new(amqpservice)
+      client.send(topic, content)
+
+      rescue Exception => e
+        @@result = e.message
+    end
+
+    redirect_to "/publishers/new"
+  end
+end

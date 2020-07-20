@@ -1,0 +1,36 @@
+<div class="header">
+  <h1><span class="mqlight">IBM MQ Light</span> on Rails</h1>
+</div>
+<div class="content">
+  <div class="publishForm">
+    <h1>Publish message</h1>
+    <%= getResult %>
+    <%= setResult %>
+    <%= form_for :publisher, url: publishers_path do |f| %>
+      <p>
+        <%= f.label :address, "IP Address"%><br>
+        <%= f.text_field :address %>
+      </p>
+ 
+      <p>
+        <%= f.label :port, "Port"%><br>
+        <%= f.text_field :port %>
+      </p>
+ 
+      <p>
+        <%= f.label :topic, "Publication Topic"%><br>
+        <%= f.text_field :topic %>
+      </p>
+ 
+      <p>
+        <%= f.label :content, "Message Text" %><br>
+        <%= f.text_area :content %>
+      </p>
+ 
+      <p>
+        <%= f.submit "Publish" %>
+      </p>
+    <% end %>
+  </div>
+  <%= link_to 'Home', welcome_index_path %>
+</div>
